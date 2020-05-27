@@ -9,14 +9,14 @@ public class SubMenu {
 	private WebDriver driver;
 
 	@FindBy(css = "a[href='/courses']")
-	private WebElement coursesLink;
+	private WebElement myCoursesLink;
 
 	public SubMenu(WebDriver driver) {
 		this.driver = driver;
 	}
 
 	public Courses clickMyCoursesLink() {
-		coursesLink.click();
+		myCoursesLink.click();
 		return new Courses(driver);
 	}
 
