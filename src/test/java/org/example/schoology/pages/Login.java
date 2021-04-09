@@ -24,6 +24,12 @@ public class Login extends AbstractPage {
     @FindBy(css = "#confirmation_cancel")
     private WebElement cancelVerifyYourAccountButton;
 
+    @FindBy(css = "#site-navigation-footer button")
+    private WebElement changeLanguageButton;
+
+    @FindBy(css = "span[class*='LanguageSwitcher']:nth-child(1) button")
+    private WebElement saveChangeLangButton;
+
     // Todo
     public Home loginAs(final String username, final String pass) {
         driver.manage().deleteAllCookies();
@@ -50,12 +56,11 @@ public class Login extends AbstractPage {
     }
 
     public void verifyLanguage() {
-        final WebElement element = driver.findElement(By.cssSelector("#site-navigation-footer button"));
         final String language = Environment.getInstance().getValue("language");
-        if (!element.getText().toLowerCase().contains(language)) {
-            element.click();
-            action.jsClick(driver.findElement(By.cssSelector("input[value='" + language + "']")));
-            driver.findElement(By.cssSelector("span[class*='LanguageSwitcher']:nth-child(1) button")).click();
+        if (!changeLanguageButton.getText().toLowerCase().contains(language)) {
+            changeLanguageButton.click();
+            action.jsClick(driver.findElement(By.cssSelector(String.format("input[value='%s']", language))));
+            saveChangeLangButton.click();
         }
     }
 
