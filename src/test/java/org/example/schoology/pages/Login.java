@@ -2,10 +2,12 @@ package org.example.schoology.pages;
 
 import java.util.concurrent.TimeUnit;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
+import org.example.core.Environment;
 import org.example.core.ui.AbstractPage;
 
 public class Login extends AbstractPage {
@@ -30,6 +32,7 @@ public class Login extends AbstractPage {
         passwordTextField.sendKeys(pass);
         loginButton.click();
         verifyYourAccount();
+        verifyLanguage();
         return new Home();
     }
 
@@ -43,6 +46,16 @@ public class Login extends AbstractPage {
         } finally {
             // Restore timeout
             driver.manage().timeouts().implicitlyWait(DEFAULT_IMPLICIT_TIMEOUT, TimeUnit.SECONDS);
+        }
+    }
+
+    public void verifyLanguage() {
+        final WebElement element = driver.findElement(By.cssSelector("#site-navigation-footer button"));
+        final String language = Environment.getInstance().getValue("language");
+        if (!element.getText().toLowerCase().contains(language)) {
+            element.click();
+            action.jsClick(driver.findElement(By.cssSelector("input[value='" + language + "']")));
+            driver.findElement(By.cssSelector("span[class*='LanguageSwitcher']:nth-child(1) button")).click();
         }
     }
 
