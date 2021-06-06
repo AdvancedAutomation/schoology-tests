@@ -37,7 +37,7 @@ public class Courses extends ViewList {
     }
 
     public AddSectionPopup clickAddSectionButton(final String courseName) {
-        By addSectionBy = By.xpath(String.format(XPATH_ADD_SECTION,courseName));
+        By addSectionBy = By.xpath(String.format(XPATH_ADD_SECTION, courseName));
         wait.until(ExpectedConditions.visibilityOfElementLocated(addSectionBy));
         wait.until(ExpectedConditions.elementToBeClickable(addSectionBy));
         WebElement addSectionButton = driver.findElement(addSectionBy);
