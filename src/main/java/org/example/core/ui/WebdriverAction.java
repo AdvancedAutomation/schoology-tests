@@ -58,7 +58,7 @@ public class WebdriverAction {
     public boolean isElementPresent(final By locator) {
         try {
             // Changing timeout
-            driver.manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);
+            driver.manage().timeouts().implicitlyWait(AbstractPage.MIN_IMPLICIT_TIMEOUT, TimeUnit.SECONDS);
             driver.findElement(locator);
             return true;
         } catch (NoSuchElementException e) {
