@@ -7,7 +7,12 @@ import java.util.ResourceBundle;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Then;
 import org.example.schoology.pages.ViewList;
-import org.example.schoology.pages.courses.*;
+import org.example.schoology.pages.courses.AddSectionPopup;
+import org.example.schoology.pages.courses.CourseForm;
+import org.example.schoology.pages.courses.Courses;
+import org.example.schoology.pages.courses.CreateCoursePopup;
+import org.example.schoology.pages.courses.EditCoursePopup;
+import org.example.schoology.pages.courses.I18NCourse;
 import org.testng.asserts.Assertion;
 
 import org.example.core.AssertionGroup;
@@ -76,10 +81,12 @@ public class CourseStepDefs {
         assertion.assertTrue(coursesList.contains(expectedSection));
     }
 //I should see the "Successfully created" message for "Technology Section" section on "Course for Section" course item
-    @Then("I should see the {string} message for {string} section on {string} course item")
-    public void iShouldSeeTheMessage(final String message, final String expectedSection, final String expectedCourseName) {
-        assertion.assertEquals(new ViewList().getMessage(),
-                String.format(resourceBundle.getString(I18NCourse.getI18nKey(message)),expectedCourseName,expectedSection),
-                "Message banner");
+@Then("I should see the {string} message for {string} section on {string} course item")
+public void iShouldSeeTheMessage(final String message, final String expectedSection,
+                                 final String expectedCourseName) {
+    assertion.assertEquals(new ViewList().getMessage(),
+            String.format(resourceBundle.getString(I18NCourse.getI18nKey(message)), expectedCourseName,
+                    expectedSection),
+            "Message banner");
     }
 }
