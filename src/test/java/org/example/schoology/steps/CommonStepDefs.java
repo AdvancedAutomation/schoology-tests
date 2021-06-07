@@ -7,7 +7,6 @@ import io.cucumber.java.DataTableType;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
-import org.example.schoology.pages.resources.I18NResource;
 import org.testng.asserts.Assertion;
 
 import org.example.core.AssertionGroup;
@@ -22,6 +21,7 @@ import org.example.schoology.pages.courses.CourseForm;
 import org.example.schoology.pages.courses.I18NCourse;
 import org.example.schoology.pages.groups.GroupForm;
 import org.example.schoology.pages.resources.AddFolderForm;
+import org.example.schoology.pages.resources.I18NResource;
 
 public class CommonStepDefs {
 

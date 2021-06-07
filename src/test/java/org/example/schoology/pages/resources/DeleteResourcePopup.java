@@ -1,12 +1,13 @@
 package org.example.schoology.pages.resources;
 
-import org.example.core.Environment;
-import org.example.core.ui.AbstractPage;
-import org.example.schoology.Resources;
+import java.util.ResourceBundle;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 
-import java.util.ResourceBundle;
+import org.example.core.Environment;
+import org.example.core.ui.AbstractPage;
+import org.example.schoology.Resources;
 
 public class DeleteResourcePopup extends AbstractPage {
 

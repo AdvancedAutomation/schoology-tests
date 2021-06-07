@@ -1,14 +1,14 @@
 package org.example.schoology.pages.courses;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-
-import org.example.schoology.pages.ViewList;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 
-import java.util.ArrayList;
-import java.util.List;
+import org.example.schoology.pages.ViewList;
 
 public class Courses extends ViewList {
 
@@ -37,7 +37,7 @@ public class Courses extends ViewList {
     }
 
     public AddSectionPopup clickAddSectionButton(final String courseName) {
-        By addSectionBy = By.xpath(String.format(XPATH_ADD_SECTION,courseName));
+        By addSectionBy = By.xpath(String.format(XPATH_ADD_SECTION, courseName));
         wait.until(ExpectedConditions.visibilityOfElementLocated(addSectionBy));
         wait.until(ExpectedConditions.elementToBeClickable(addSectionBy));
         WebElement addSectionButton = driver.findElement(addSectionBy);
@@ -57,10 +57,11 @@ public class Courses extends ViewList {
     public String getSectionByName(final String courseName) {
         return action.getText(driver.findElement(By.xpath(String.format(XPATH_SECTION_BY_NAME, courseName))));
     }
+
     public List<String> getSectionsByName(final String courseName) {
         List<String> sectionsNames = new ArrayList<>();
         List<WebElement> sections = driver.findElements(By.xpath(String.format(XPATH_SECTION_BY_NAME, courseName)));
-        for (WebElement section: sections) {
+        for (WebElement section : sections) {
             sectionsNames.add(action.getText(section));
         }
         return sectionsNames;

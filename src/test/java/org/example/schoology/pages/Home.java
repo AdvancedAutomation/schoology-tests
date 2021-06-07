@@ -1,12 +1,12 @@
 package org.example.schoology.pages;
 
-import org.example.core.Environment;
-import org.example.schoology.Resources;
+import java.util.ResourceBundle;
+
 import org.openqa.selenium.By;
 
+import org.example.core.Environment;
 import org.example.core.ui.AbstractPage;
-
-import java.util.ResourceBundle;
+import org.example.schoology.Resources;
 
 public class Home extends AbstractPage {
 
