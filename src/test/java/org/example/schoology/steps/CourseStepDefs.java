@@ -6,6 +6,7 @@ import java.util.ResourceBundle;
 
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Then;
+import io.cucumber.java.en.When;
 import org.example.schoology.pages.ViewList;
 import org.example.schoology.pages.courses.*;
 import org.testng.asserts.Assertion;
@@ -81,5 +82,15 @@ public class CourseStepDefs {
         assertion.assertEquals(new ViewList().getMessage(),
                 String.format(resourceBundle.getString(I18NCourse.getI18nKey(message)),expectedCourseName,expectedSection),
                 "Message banner");
+    }
+
+    @When("I search {string} course")
+    public void iSearchCourse(String courseName) {
+
+        final String keySearch = "search";
+        String search = ResourceBundle.getBundle(Resources.I18N_COURSE,
+                Environment.getInstance().getLocale()).getString(keySearch);
+        SubMenu subMenu = home.clickSearck(search);
+        subMenu.searchString(courseName, search);
     }
 }

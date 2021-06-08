@@ -1,5 +1,6 @@
 package org.example.schoology.pages;
 
+import org.apache.commons.lang3.ObjectUtils;
 import org.example.core.Environment;
 import org.example.schoology.Resources;
 import org.openqa.selenium.By;
@@ -29,5 +30,23 @@ public class Home extends AbstractPage {
 
         return new SubMenu();
     }
+    public SubMenu clickSearck(final String menuName) {
+//        final String keyResources = "resources";
+//        String resource = ResourceBundle.getBundle(Resources.I18N_RESOURCE,
+//                Environment.getInstance().getLocale()).getString(keyResources);
+//        if (menuName.equals(resource)){
+        if (menuName!= null){
+            action.jsClick(driver.findElement(By.xpath(String.format("//button[@aria-label='%s']", menuName))));
+        }
+
+        return new SubMenu();
+    }
 
 }
+
+//span[text()='Courses']/parent::button
+
+//button[@aria-label="Buscar"]
+//input[@placeholder="Buscar"]
+//input[@value="EdgarSearchTest"]
+//a[text()='EdgarSearchTest: Section 1']
